@@ -1,0 +1,8 @@
+{
+  "name": "vegan_new_app",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "vue-vite",
+  "id": "ee739fb9"
+}
