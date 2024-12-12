@@ -222,33 +222,46 @@ function redirectUrl(url:string){
   })
 }
 
-const requestPhotoLibraryPermission = async () => {
-  // Check current status of permission
-  const { status } = await Permissions.query({ name: 'photos' });
-
-  if (status === 'granted') {
-    ;
-  } else {
-    // Request permission if not granted
-    const result = await Permissions.request({ name: 'photos' });
-    if (result.granted) {
-      ;
-    } else {
-      cuteAlert({
-        type: 'warning',
-        title: "Attention!",
-        description: 'We dont have permission to access photos',
-        primaryButtonText: 'Ok',
-      }).then((d:string)=>{
-        if (d=='primaryButtonClicked'){
-        }
-      })
-    }
+const requestPermissions = async () => {
+  // Request Camera Permission
+  const cameraPermission = await Permissions.request({ name: 'camera' });
+  if (!cameraPermission.granted) {
+    await cuteAlert({
+      type: 'warning',
+      title: "Attention!",
+      description: 'We dont have permission to access camera',
+      primaryButtonText: 'Ok',
+    })
+    return;
   }
+  // Request Microphone Permission
+  const microphonePermission = await Permissions.request({ name: 'microphone' });
+  if (!microphonePermission.granted) {
+    await cuteAlert({
+      type: 'warning',
+      title: "Attention!",
+      description: 'We dont have permission to access microphone',
+      primaryButtonText: 'Ok',
+    })
+    return;
+  }
+
+  const photosPermission = await Permissions.request({ name: 'photos' });
+  if (!photosPermission.granted) {
+    await cuteAlert({
+      type: 'warning',
+      title: "Attention!",
+      description: 'We dont have permission to access photos',
+      primaryButtonText: 'Ok',
+    })
+    return;
+  }
+
 };
 
+
 onMounted(()=>{
-  requestPhotoLibraryPermission()
+  requestPermissions()
 })
 </script>
 

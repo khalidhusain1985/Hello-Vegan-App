@@ -54,5 +54,7 @@
         <key>NSCameraUsageDescription</key>
         <string>We need access to your camera to take photos and record videos.</string>
 
+        <key>NSMicrophoneUsageDescription</key>
+        <string>We need access to your microphone for recording audio.</string>
 </dict>
 </plist>
