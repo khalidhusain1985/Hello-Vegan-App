@@ -10,7 +10,7 @@
     "test:e2e": "cypress run",
     "test:unit": "vitest",
     "lint": "eslint .",
-    "launch": "npx capacitor-assets generate && ionic cap sync android && ionic cap open android",
+    "launch": "capacitor-set-version -v 2.0.0 -b 10 && npx capacitor-assets generate && ionic cap sync android && ionic cap open android",
     "assets": "npx @capacitor/assets generate"
   },
   "dependencies": {
