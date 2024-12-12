@@ -2,16 +2,10 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-<key>NSMicrophoneUsageDescription</key>
-<string>We need access to your microphone for audio recording.</string>
-<key>NSCameraUsageDescription</key>
-<string>We need access to your camera to take photos and record videos.</string>
-
-
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleDisplayName</key>
-        <string>vegan_new_app</string>
+        <string>Hello Vegan</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -51,5 +45,14 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<true/>
+
+	<!-- Photo Library Access -->
+        <key>NSPhotoLibraryUsageDescription</key>
+        <string>We need access to your photo library to upload your photos and videos.</string>
+
+        <!-- Camera Access -->
+        <key>NSCameraUsageDescription</key>
+        <string>We need access to your camera to take photos and record videos.</string>
+
 </dict>
 </plist>

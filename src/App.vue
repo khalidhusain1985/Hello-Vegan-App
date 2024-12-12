@@ -51,7 +51,7 @@ import {
   IonSplitPane,
     menuController
 } from '@ionic/vue';
-import { ref } from 'vue';
+import {onMounted, ref} from 'vue';
 import {calendar, fastFood, home, newspaper, personAdd, reader, restaurant,} from 'ionicons/icons';
 import {pitLib} from "../helpers/pitLib";
 import {env} from "../helpers/env";
@@ -62,7 +62,8 @@ import {store} from "../store/DataLake";
 import {PaginatedApiResponse} from "../types";
 import axios from "axios";
 import {cuteAlert, cuteToast} from "cute-alert";
-
+import { Plugins } from '@capacitor/core';
+const { PhotoLibrary, Permissions } = Plugins;
 const router = useRouter();
 const route = useRoute();
 const selectedIndex = ref(0);
@@ -220,6 +221,35 @@ function redirectUrl(url:string){
     menuController.close()
   })
 }
+
+const requestPhotoLibraryPermission = async () => {
+  // Check current status of permission
+  const { status } = await Permissions.query({ name: 'photos' });
+
+  if (status === 'granted') {
+    ;
+  } else {
+    // Request permission if not granted
+    const result = await Permissions.request({ name: 'photos' });
+    if (result.granted) {
+      ;
+    } else {
+      cuteAlert({
+        type: 'warning',
+        title: "Attention!",
+        description: 'We dont have permission to access photos',
+        primaryButtonText: 'Ok',
+      }).then((d:string)=>{
+        if (d=='primaryButtonClicked'){
+        }
+      })
+    }
+  }
+};
+
+onMounted(()=>{
+  requestPhotoLibraryPermission()
+})
 </script>
 
 
