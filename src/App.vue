@@ -62,8 +62,8 @@ import {store} from "../store/DataLake";
 import {PaginatedApiResponse} from "../types";
 import axios from "axios";
 import {cuteAlert, cuteToast} from "cute-alert";
-import { Plugins } from '@capacitor/core';
-const { PhotoLibrary, Permissions } = Plugins;
+// import { Plugins } from '@capacitor/core';
+// const { PhotoLibrary, Permissions } = Plugins;
 const router = useRouter();
 const route = useRoute();
 const selectedIndex = ref(0);
@@ -221,48 +221,50 @@ function redirectUrl(url:string){
     menuController.close()
   })
 }
-
-const requestPermissions = async () => {
-  // Request Camera Permission
-  const cameraPermission = await Permissions.request({ name: 'camera' });
-  if (!cameraPermission.granted) {
-    await cuteAlert({
-      type: 'warning',
-      title: "Attention!",
-      description: 'We dont have permission to access camera',
-      primaryButtonText: 'Ok',
-    })
-    return;
-  }
-  // Request Microphone Permission
-  const microphonePermission = await Permissions.request({ name: 'microphone' });
-  if (!microphonePermission.granted) {
-    await cuteAlert({
-      type: 'warning',
-      title: "Attention!",
-      description: 'We dont have permission to access microphone',
-      primaryButtonText: 'Ok',
-    })
-    return;
-  }
-
-  const photosPermission = await Permissions.request({ name: 'photos' });
-  if (!photosPermission.granted) {
-    await cuteAlert({
-      type: 'warning',
-      title: "Attention!",
-      description: 'We dont have permission to access photos',
-      primaryButtonText: 'Ok',
-    })
-    return;
-  }
-
-};
-
-
-onMounted(()=>{
-  requestPermissions()
-})
+//
+// const requestPermissions = async () => {
+//   // Request Camera Permission
+//   const cameraPermission = await Permissions.request({ name: 'camera' });
+//   if (!cameraPermission.granted) {
+//     await cuteAlert({
+//       type: 'warning',
+//       title: "Attention!",
+//       description: 'We dont have permission to access camera',
+//       primaryButtonText: 'Ok',
+//     })
+//     return;
+//   }
+//   // Request Microphone Permission
+//   const microphonePermission = await Permissions.request({ name: 'microphone' });
+//   if (!microphonePermission.granted) {
+//     await cuteAlert({
+//       type: 'warning',
+//       title: "Attention!",
+//       description: 'We dont have permission to access microphone',
+//       primaryButtonText: 'Ok',
+//     })
+//     return;
+//   }
+//
+//   const photosPermission = await Permissions.request({ name: 'photos' });
+//   if (!photosPermission.granted) {
+//     await cuteAlert({
+//       type: 'warning',
+//       title: "Attention!",
+//       description: 'We dont have permission to access photos',
+//       primaryButtonText: 'Ok',
+//     })
+//     return;
+//   }
+//
+// };
+//
+//
+// onMounted(()=>{
+//   setTimeout(()=>{
+//     requestPermissions()
+//   },1000)
+// })
 </script>
 
 
