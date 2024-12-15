@@ -70,7 +70,7 @@
                   </div>
                 </div>
               </div>
-              <ui-panel class="mt-3" ref="divResp" :type="createResp?.status===true?'success':'warning'" :content="createResp?.message" @show="createResp=$event" v-if="createResp"></ui-panel>
+              <ui-panel class="mt-3" ref="divResp" :type="createResp?.status?'success':'warning'" :content="createResp?.message" :show="!!createResp?.message" @show="createResp=$event" v-if="createResp"></ui-panel>
               <div class="row mt-3">
                 <div class="col text-right">
                   <button :disabled="loadingCreateResp" @click="submit" class="btn btn-primary text-white" >

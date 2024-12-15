@@ -46,9 +46,9 @@
           </div>
         </div>
       </div>
-      <div class="row">
+      <div class="row mb-2 footer fixed-bottom">
         <div class="col">
-          <div class="form-group icon-right-input style1-input mb-0">
+          <div class="form-group icon-right-input style1-input ">
             <input v-on:keyup.enter="send()" v-model="chatFormData.content" type="text" placeholder="Start typing.." class="form-control rounded-xl bg-greylight border-0 font-xssss fw-500 ps-3">
             <i @click="send()" v-if="!loadingSendMessage" role="button" class="fa-regular fa-paper-plane text-grey-500 font-md"></i>
             <i v-if="loadingSendMessage" class="fa-solid fa-spinner fa-spin-pulse" role="status" aria-hidden="true"></i>
@@ -78,7 +78,7 @@ const userChatResponse=ref<PaginatedApiResponse>()
 const loadingSendMessage=ref<true|false>(false)
 const sendMessageResponse=ref<ApiResponse>()
 
-const userChatPage=ref<Number>(1)
+const userChatPage=ref<number>(1)
 const targetUser=ref<User>()
 axios.post<PaginatedApiResponse>(endpoints.user.list, {_id:route.params._id}, {
   headers: pitLib.util.headers(),

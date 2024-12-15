@@ -2,7 +2,7 @@
 import {ref, watch} from "vue";
 
 const props=defineProps(['show','content','type'])
-const show=ref<boolean>(props.show)
+const show=ref<boolean>(props.show??true)
 const emits=defineEmits(['show'])
 watch(props,()=>{
   show.value=true
